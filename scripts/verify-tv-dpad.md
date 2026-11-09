@@ -1,22 +1,22 @@
-# Vérification manuelle (Android TV 1080p)
+# Manual verification (Android TV 1080p)
 
-Build automatisé : `./gradlew assembleDebug` (succès vérifié).
+Automated build: `./gradlew assembleDebug`.
 
-## Émulateur TV
+## TV emulator
 
-Créer un AVD **Android TV (1080p)** API 34+ dans Android Studio, puis :
+Create an **Android TV (1080p)** AVD, API 34+, then:
 
 ```bash
 ./gradlew installDebug
 adb shell am start -n app.tvbrowser/.MainActivity
 ```
 
-## Scénario D-pad
+## D-pad checklist
 
-- [ ] Barre : navigation gauche/droite entre tous les boutons
-- [ ] Bas depuis la barre → cadre du volet actif ; OK → contenu web ; Back → cadre
-- [ ] Colonnes : deux sites ; passage grille ; retour volet unique → URLs des slots conservées
-- [ ] Zoom 150 % sur tous les volets visibles ; kill process ; relance → zoom 150 %
-- [ ] Plein écran ; Back → barre visible
-- [ ] Appui long OK dans la page → focus sur le champ d’adresse
-- [ ] Erreur réseau → overlay Réessayer focusable
+- [ ] Toolbar: left/right across all controls
+- [ ] Down from toolbar → active pane frame; OK → web content; Back → frame
+- [ ] Columns: two sites; switch to grid; back to single pane → hidden slot URLs preserved
+- [ ] Zoom 150% on all visible panes; kill process; relaunch → still 150%
+- [ ] Fullscreen; Back → toolbar visible
+- [ ] Long OK in page → address field focused
+- [ ] Network error → Retry overlay is focusable

@@ -1,40 +1,32 @@
 # TV Browser
 
-Navigateur **minimal** pour **Android TV** et Google TV, basé sur le moteur **WebView Chromium** du système. Une seule barre d’outils, un zoom global persistant, le plein écran et jusqu’à quatre volets (split vertical, horizontal ou grille).
+A **minimal web browser** for **Android TV** and Google TV, powered by the system **Chromium WebView**. One compact toolbar, **persistent global zoom**, fullscreen mode, and up to **four panes** (single, side-by-side columns, stacked rows, or a 2×2 grid).
 
-[English summary](#english-summary) · Licence [MIT](LICENSE)
+**License:** [MIT](LICENSE)
 
-## Fonctionnalités
+## Features
 
-| Zone | Comportement |
-|------|----------------|
-| **Barre** | Retour / avancer / recharger (volet actif), champ d’adresse, zoom − / % / + (reset à 100 %), plein écran |
-| **Split** | 1 volet · 2 colonnes · 2 lignes · grille 2×2 — réappuyer sur le mode actif revient à 1 volet |
-| **Zoom** | Un seul réglage pour tous les volets et tous les sites, conservé après redémarrage de l’app |
-| **Télécommande** | Parcours barre → cadre du volet → page web ; Back = sortie (pas d’historique via Back) ; appui long sur OK = focus adresse |
-| **Sécurité** | Connexion SSL refusée côté app, contenu mixte bloqué, permissions web refusées |
+| Area | Behavior |
+| ---- | -------- |
+| **Toolbar** | Back / forward / reload (active pane), address field, zoom − / % / + (tap % to reset to 100%), fullscreen |
+| **Split layout** | 1 pane · 2 columns · 2 rows · 2×2 grid — press the active layout again to return to a single pane |
+| **Zoom** | One setting shared by every pane and every site, restored after app restart |
+| **Remote (D-pad)** | Toolbar → pane frame → web content; **Back** exits layers (not history); long **OK** (~600 ms) focuses the address bar |
+| **Security** | SSL errors blocked in-app, mixed content disabled, web permission requests denied |
 
-## Captures
+## Screenshots
 
-> Lance l’app sur un émulateur ou une box TV, puis ajoute des captures dans `docs/screenshots/` si tu contribues.
+Run the app on a TV box or Android TV emulator, then add images under `docs/screenshots/` if you contribute.
 
-## Prérequis
+## Requirements
 
 - **JDK 17**
-- **Android SDK** (compile SDK 36 recommandé, min SDK 26)
-- Appareil ou émulateur **Android TV** (profil Leanback) pour une expérience fidèle
+- **Android SDK** (compile SDK **36**, min SDK **26**)
+- **Android TV** device or **Leanback** emulator for the intended UX
 
-Configurer le SDK :
+Set `ANDROID_HOME` and ensure `local.properties` contains `sdk.dir=...` (not committed).
 
-```bash
-export ANDROID_HOME="$HOME/Library/Android/sdk"   # adapter selon ta machine
-```
-
-Le fichier `local.properties` (généré par Android Studio ou à la main) doit contenir `sdk.dir=...` — il n’est **pas** versionné.
-
-## Installation
-
-### Depuis les sources
+## Quick start
 
 ```bash
 git clone https://github.com/bertinselendo/tv-browser.git
@@ -42,65 +34,59 @@ cd tv-browser
 ./gradlew assembleDebug
 ```
 
-APK debug : `app/build/outputs/apk/debug/app-debug.apk`
+Debug APK: `app/build/outputs/apk/debug/app-debug.apk`
 
 ```bash
 ./gradlew installDebug
 adb shell am start -n app.tvbrowser/.MainActivity
 ```
 
-### Émulateur TV
+### Android TV emulator
 
-Dans Android Studio : **Device Manager** → créer un appareil **Android TV (1080p)**, API 34+.
+In Android Studio: **Device Manager** → create **Android TV (1080p)**, API 34+.
 
-Checklist manuelle D-pad : [scripts/verify-tv-dpad.md](scripts/verify-tv-dpad.md).
+Manual D-pad checklist: [scripts/verify-tv-dpad.md](scripts/verify-tv-dpad.md).
 
-## Utilisation (télécommande)
+## Using the remote
 
-1. **Barre** : flèches gauche/droite entre les contrôles ; **Bas** → cadre du volet actif.
-2. **Cadre** : **OK** entre dans la page ; **Back** revient à la barre.
-3. **Zoom** : − / + (pas de 10 %) ; touche **%** remet 100 %.
-4. **Split** : icônes colonnes, lignes, grille ; chaque slot garde sa propre URL.
-5. **Plein écran** : masque la barre ; **Back** la réaffiche.
-6. **Adresse** : depuis la page, **appui long OK** (~600 ms) ou focus sur le champ dans la barre.
+1. **Toolbar:** left/right between controls; **Down** moves focus to the active pane frame.
+2. **Frame:** **OK** enters the page; **Back** returns to the toolbar (inside the page, **Back** exits to the frame first).
+3. **Zoom:** − / + in steps of 10%; **%** button resets to 100%.
+4. **Split:** column, row, and grid icons; each slot keeps its own URL when hidden.
+5. **Fullscreen:** hides the toolbar; **Back** shows it again.
+6. **Address bar:** long **OK** from web content, or move focus to the URL field on the toolbar.
 
-Les saisies sans schéma sont préfixées par `https://`.
+URLs without a scheme are opened with `https://`.
 
 ## Architecture
 
 ```
 MainActivity
-├── BrowserViewModel + DataStore (zoom, layout, URLs, volet actif)
-├── Barre (ViewBinding)
+├── BrowserViewModel + DataStore (zoom, layout, URLs, active pane)
+├── Toolbar (ViewBinding)
 └── PaneGrid
-    └── 4 × PaneSlot → PaneWebView (Chromium système)
+    └── 4 × PaneSlot → PaneWebView (system Chromium)
 ```
 
-- **Kotlin**, vues XML (pas Compose) pour un focus D-pad prévisible.
-- Package : `app.tvbrowser`.
-- Pas de fork Chromium embarqué : APK léger, mises à jour WebView via le système / Play.
+- **Kotlin** + XML views (not Compose) for predictable D-pad focus.
+- Application ID: `app.tvbrowser`.
+- No bundled Chromium fork — small APK; WebView updates come from the system / Play Store.
 
-## Développement
+## Development
 
 ```bash
 ./gradlew assembleDebug
-./gradlew :app:lintDebug   # optionnel
+./gradlew :app:lintDebug   # optional
 ```
 
-Débogage WebView (build debug) : Chrome → `chrome://inspect`.
+WebView debugging (debug builds): Chrome → `chrome://inspect`.
 
-## Contribuer
+## Contributing
 
-1. Fork & branche feature.
-2. Commits au format court : `🚀 feat: ...`, `🛠️ fix: ...`, etc.
-3. PR avec description et, si UI, capture ou étapes de test TV.
+1. Fork and branch.
+2. Short commit messages: `🚀 feat: …`, `🛠️ fix: …`, `🔁 refactor: …`, `🎨 style: …`.
+3. Open a PR with a clear description and TV test steps (or a screenshot).
 
-## Licence
+## License
 
 [MIT](LICENSE) — Copyright (c) 2026 Bertin Selendo
-
----
-
-## English summary
-
-**TV Browser** is a minimal **Android TV** web shell using the system **Chromium WebView**: one toolbar, persistent global zoom, fullscreen, and up to four panes (column, row, or 2×2 grid). Built with Kotlin and XML views for reliable D-pad focus. MIT licensed.
