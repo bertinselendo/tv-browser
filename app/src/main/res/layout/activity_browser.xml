@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <HorizontalScrollView
+        android:id="@+id/toolbarScroll"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="@color/toolbar_bg"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/back"
+                android:focusable="true"
+                android:src="@drawable/ic_nav_back"
+                android:nextFocusRight="@id/btnForward" />
+
+            <ImageButton
+                android:id="@+id/btnForward"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/forward"
+                android:focusable="true"
+                android:src="@drawable/ic_nav_forward"
+                android:nextFocusLeft="@id/btnBack"
+                android:nextFocusRight="@id/btnReload" />
+
+            <ImageButton
+                android:id="@+id/btnReload"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/reload"
+                android:focusable="true"
+                android:src="@drawable/ic_nav_reload"
+                android:nextFocusLeft="@id/btnForward"
+                android:nextFocusRight="@id/urlInput" />
+
+            <EditText
+                android:id="@+id/urlInput"
+                android:layout_width="360dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:hint="@string/hint_url"
+                android:imeOptions="actionGo"
+                android:inputType="textUri"
+                android:maxLines="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/toolbar_text"
+                android:textColorHint="@color/toolbar_muted"
+                android:focusable="true"
+                android:nextFocusLeft="@id/btnReload"
+                android:nextFocusRight="@id/btnZoomOut" />
+
+            <ImageButton
+                android:id="@+id/btnZoomOut"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/zoom_out"
+                android:focusable="true"
+                android:src="@drawable/ic_zoom_out"
+                android:nextFocusLeft="@id/urlInput"
+                android:nextFocusRight="@id/btnZoomLevel" />
+
+            <Button
+                android:id="@+id/btnZoomLevel"
+                android:layout_width="72dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/zoom_reset"
+                android:focusable="true"
+                android:text="100 %"
+                android:textAllCaps="false"
+                android:textColor="@color/toolbar_text"
+                android:nextFocusLeft="@id/btnZoomOut"
+                android:nextFocusRight="@id/btnZoomIn" />
+
+            <ImageButton
+                android:id="@+id/btnZoomIn"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/zoom_in"
+                android:focusable="true"
+                android:src="@drawable/ic_zoom_in"
+                android:nextFocusLeft="@id/btnZoomLevel"
+                android:nextFocusRight="@id/btnFullscreen" />
+
+            <ImageButton
+                android:id="@+id/btnFullscreen"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/fullscreen"
+                android:focusable="true"
+                android:src="@drawable/ic_fullscreen"
+                android:nextFocusLeft="@id/btnZoomIn"
+                android:nextFocusRight="@id/btnLayoutColumns" />
+
+            <ImageButton
+                android:id="@+id/btnLayoutColumns"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/layout_columns"
+                android:focusable="true"
+                android:src="@drawable/ic_layout_columns"
+                android:nextFocusLeft="@id/btnFullscreen"
+                android:nextFocusRight="@id/btnLayoutRows" />
+
+            <ImageButton
+                android:id="@+id/btnLayoutRows"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/layout_rows"
+                android:focusable="true"
+                android:src="@drawable/ic_layout_rows"
+                android:nextFocusLeft="@id/btnLayoutColumns"
+                android:nextFocusRight="@id/btnLayoutGrid" />
+
+            <ImageButton
+                android:id="@+id/btnLayoutGrid"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/toolbar_button_bg"
+                android:contentDescription="@string/layout_grid"
+                android:focusable="true"
+                android:src="@drawable/ic_layout_grid"
+                android:nextFocusLeft="@id/btnLayoutRows" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <app.tvbrowser.ui.PaneGrid
+        android:id="@+id/paneGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarScroll" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

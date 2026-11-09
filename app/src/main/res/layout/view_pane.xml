@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/paneRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pane_frame_bg"
+    android:clipToPadding="false"
+    android:focusable="true"
+    android:descendantFocusability="beforeDescendants">
+
+    <FrameLayout
+        android:id="@+id/webContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:background="@color/black" />
+
+    <include
+        android:id="@+id/errorOverlay"
+        layout="@layout/overlay_error"
+        android:visibility="gone" />
+</FrameLayout>

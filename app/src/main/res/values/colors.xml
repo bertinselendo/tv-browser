@@ -1,0 +1,13 @@
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="toolbar_bg">#FF1A1A1A</color>
+    <color name="toolbar_button_bg">#FF2D2D2D</color>
+    <color name="toolbar_button_focus">#FF3D5AFE</color>
+    <color name="toolbar_text">#FFE8E8E8</color>
+    <color name="toolbar_muted">#FF9E9E9E</color>
+    <color name="pane_frame_active">#FFFFFFFF</color>
+    <color name="pane_frame_inactive">#FF4A4A4A</color>
+    <color name="divider">#FF333333</color>
+    <color name="error_bg">#FF121212</color>
+</resources>

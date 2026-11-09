@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.TvBrowser" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="colorPrimary">@color/toolbar_button_focus</item>
+        <item name="colorAccent">@color/toolbar_button_focus</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

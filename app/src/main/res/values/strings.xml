@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">TV Browser</string>
+    <string name="hint_url">Adresse web</string>
+    <string name="back">Retour</string>
+    <string name="forward">Avancer</string>
+    <string name="reload">Recharger</string>
+    <string name="zoom_out">Zoom -</string>
+    <string name="zoom_in">Zoom +</string>
+    <string name="zoom_reset">Réinitialiser le zoom à 100 %</string>
+    <string name="fullscreen">Plein écran</string>
+    <string name="exit_fullscreen">Quitter le plein écran</string>
+    <string name="layout_single">Un volet</string>
+    <string name="layout_columns">Deux colonnes</string>
+    <string name="layout_rows">Deux lignes</string>
+    <string name="layout_grid">Grille 2×2</string>
+    <string name="pane_frame">Volet %1$d</string>
+    <string name="error_ssl">Connexion non sécurisée</string>
+    <string name="error_network">Impossible de charger la page</string>
+    <string name="retry">Réessayer</string>
+    <string name="download_not_supported">Téléchargement non pris en charge</string>
+    <string name="empty_pane_title">Saisis une adresse</string>
+    <string name="empty_pane_body">Utilise la barre en haut pour ouvrir un site dans ce volet.</string>
+    <string name="zoom_percent">%1$d %%</string>
+</resources>
