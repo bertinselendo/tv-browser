@@ -6,13 +6,13 @@ A **minimal web browser** for **Android TV** and Google TV, powered by the syste
 
 ## Features
 
-| Area | Behavior |
-| ---- | -------- |
-| **Toolbar** | Back / forward / reload (active pane), address field, zoom − / % / + (tap % to reset to 100%), fullscreen |
-| **Split layout** | 1 pane · 2 columns · 2 rows · 2×2 grid — press the active layout again to return to a single pane |
-| **Zoom** | One setting shared by every pane and every site, restored after app restart |
+| Area               | Behavior                                                                                                               |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **Toolbar**        | Back / forward / reload (active pane), address field, zoom − / % / + (tap % to reset to 100%), fullscreen              |
+| **Split layout**   | 1 pane · 2 columns · 2 rows · 2×2 grid — press the active layout again to return to a single pane                      |
+| **Zoom**           | One setting shared by every pane and every site, restored after app restart                                            |
 | **Remote (D-pad)** | Toolbar → pane frame → web content; **Back** exits layers (not history); long **OK** (~600 ms) focuses the address bar |
-| **Security** | SSL errors blocked in-app, mixed content disabled, web permission requests denied |
+| **Security**       | SSL errors blocked in-app, mixed content disabled, web permission requests denied                                      |
 
 ## Screenshots
 
